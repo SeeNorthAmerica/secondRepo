@@ -1,0 +1,13 @@
+.jumbotron {
+	background-color: green;
+	color: white;
+	font-family: 'Calligraffitti', cursive;
+}
+
+.panel-heading {
+	text-align: center;
+}
+
+.panel-body {
+	text-align: center;
+}
