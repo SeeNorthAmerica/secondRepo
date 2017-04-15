@@ -1,5 +1,12 @@
+body {
+	background-image: url("https://tse3.mm.bing.net/th?id=OIP.mNx_D5uX-uc-5e8pFdc88AEsDU&pid=15.1&P=0&w=237&h=168");
+  	background-size: cover;
+  	background-position: center;
+  	background-attachment: fixed;
+}
+
 .jumbotron {
-	background-color: green;
+	background-color: grey;
 	color: white;
 	font-family: 'Calligraffitti', cursive;
 }
@@ -8,6 +15,36 @@
 	text-align: center;
 }
 
-.panel-body {
+.row {
 	text-align: center;
 }
+
+button {
+	text-align: center;
+}
+
+table {
+	width: 100%;
+}
+
+td, th {
+	height: 100%;
+	border: 2px;
+	padding: 2px;
+
+}
+
+#dealsOutput, #placesOutcome, #thingsOutcome, #sightsOutcome {
+text-align: right;
+}
+
+#map {
+	height: 500px;
+	width: 100%;
+}
+
+.url {
+	width: 100%;
+}
+
+
