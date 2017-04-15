@@ -16,10 +16,11 @@
 	<!-- MapQuest Leaflet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
-
+	<!--firebase reference-->
+    <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase.js"></script>
 	<!-- AJAX Calls -->
 	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
-<!-- 	Mapquest Leaflet -->
+	<!-- Mapquest Leaflet -->
 	<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=uOBx9yqfnesCqlEImZOMQYshfmGNQWn3"></script>
 	<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=uOBx9yqfnesCqlEImZOMQYshfmGNQWn3"></script>
 
@@ -32,22 +33,26 @@
 
 <body>
 
-	<div class="container">
+<!-- 	<div class="container">
 		<div class="jumbotron">
 			<h1 class="text-center"><strong>Explore North America</strong></h1>
 			<br>
 			<p class="text-center">How far away is your destination? What deals does it have to offer?</p>
-		</div><!--closes jumbotron-->
-	</div>
+		</div><!closes jumbotron-->
+	<!-- </div> - -->->
 
 	<div class="container">
-		<ul class="nav nav-pills">
-  			<li role="presentation" class="active"><a href="index.html">Home</a></li>
-  			<li role="presentation"><a href="savedSearches.html">Saved Searches</a></li>
-		</ul>
+		<div class="jumbotron">
+			<h1 class="text-center"><strong>Explore North America</strong></h1>
+			</p> How far away is your destination? What deals does it have to offer?</p>
+			<div class="image">
+           		<a><img href="http://www.worldtravelguide.net/united-states-america" target="_blank" class="urlImg" ></img></a>
+            </div>
+			<div>
+				<p id="text-center">Scroll over the map above to view the most and least popular states for travel.</p>
+			</div>
+		</div><!--closes jumbotron-->
 	</div>
-
-	<br>
 
 	<div class="container">
 		<div class="row">
@@ -80,12 +85,7 @@
 
 					<div class="container">
 						<div class="row">
-						  	<div class="col-md-1"></div>
-						  	<div class="col-md-4"></div>
-						  	<div class="col-md-1"><button type="submit" class="btn btn-primary" id="submit">Submit</button></div>
-						  	<div class="col-md-1"><button type="save" class="btn btn-primary" id="saveSearch">Save Search</button></div>
-						  	<div class="col-md-4"></div>
-						  	<div class="col-md-1"></div>
+						  	<div class="col-md-12"><button type="submit" class="btn btn-primary" id="submit">Submit</button></div>
 						</div>
 			  		</div>
 			</div>
@@ -137,15 +137,9 @@
 					<div class="row">
 					<table id="dealsTable" class="panel-body"></table>
 					</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div id="dealsImage" class="panel-body"></div>
-							</div>
-							
-							<div class="col-md-6">
-								<div id="dealsOutcome" class="panel-body"></div>
-							</div>		
-						</div>
+					<div class="row">
+					<div class="panel-body"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -167,15 +161,9 @@
 					<div class="row">
 					<table id="placesTable" class="panel-body"></table>
 					</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div id="placesImage" class="panel-body"></div>
-							</div>
-							
-							<div class="col-md-6">
-								<div id="placesOutcome" class="panel-body"></div>
-							</div>		
-						</div>
+					<div class="row">
+					<div class="panel-body"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -196,15 +184,9 @@
 					<div class="row">
 					<table id="sightsTable" class="panel-body"></table>
 					</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div id="sightsImage" class="panel-body"></div>
-							</div>
-							
-							<div class="col-md-6">
-								<div id="sightsOutcome" class="panel-body"></div>
-							</div>		
-						</div>
+					<div class="row">
+					<div class="panel-body"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -225,15 +207,9 @@
 					<div class="row">
 					<table id="thingsTable" class="panel-body"></table>
 					</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div id="thingsImage" class="panel-body"></div>
-							</div>
-							
-							<div class="col-md-6">
-								<div id="thingsOutcome" class="panel-body"></div>
-							</div>		
-						</div>
+					<div class="row">
+					<div class="panel-body"></div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,41 +1,64 @@
-body {
-	background-image: url("https://tse3.mm.bing.net/th?id=OIP.mNx_D5uX-uc-5e8pFdc88AEsDU&pid=15.1&P=0&w=237&h=168");
-  	background-size: cover;
-  	background-position: center;
-  	background-attachment: fixed;
+.jumbotron {
+    background-color: grey;
+    color: white;
+    font-family: 'Calligraffitti', cursive;
+    font-size: 24px;
+    text-align: center;
 }
 
-.jumbotron {
-	background-color: grey;
-	color: white;
-	font-family: 'Calligraffitti', cursive;
+.urlImg { 
+	width: 620px;
+ 	height: 400px; 
+ 	src: '../../images/images.jpg';
+ 	background-image: url('../../images/images.jpg');
+ 	background-size: cover;
+ 	background-position: center;
+ }
+
+.urlImg:hover { 
+	width: 620px;
+ 	height: 400px; 
+ 	src: '../../images/popularStates.jpg';
+	background-image: url('../../images/popularStates.jpg'); 
+	background-size: cover;
+ 	background-position: center;
+} 
+
+#text-center{
+    font-family: "Times";
+    font-size: 20px;
+}
+
+h1{
+    padding: 20px;
+}
+
+.active{
+    margin-bottom: 5px;
 }
 
 .panel-heading {
-	text-align: center;
+    text-align: center;
 }
 
 .row {
-	text-align: center;
+    text-align: center;
 }
 
 button {
-	text-align: center;
+    text-align: center;
 }
 
 table {
-	width: 100%;
+    width: 100%;
 }
 
-td, th {
+td, th, tr {
+	clear: both;
 	height: 100%;
 	border: 2px;
 	padding: 2px;
-
-}
-
-#dealsOutput, #placesOutcome, #thingsOutcome, #sightsOutcome {
-text-align: right;
+	width: 25%;
 }
 
 #map {
@@ -44,7 +67,29 @@ text-align: right;
 }
 
 .url {
-	width: 100%;
+	width: 200px;
+	height: 200px;
 }
 
-
+body {
+	background-image: url('../../images/places.jpg');
+	background-size: cover;
+  	background-position: center;
+  	background-attachment: fixed;
+}
+/*@media screen and (max-width: 980px){
+  body{
+    background-color: orange;
+  }
+}
+@media screen and (max-width: 768px){
+  body {
+  background-color: purple;
+}
+  
+}
+@media screen and (max-width: 640px){
+    body{
+        background-color: yellow;
+    }
+}*/
