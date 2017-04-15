@@ -19,6 +19,10 @@
 
 	<!-- AJAX Calls -->
 	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+<!-- 	Mapquest Leaflet -->
+	<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=uOBx9yqfnesCqlEImZOMQYshfmGNQWn3"></script>
+	<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=uOBx9yqfnesCqlEImZOMQYshfmGNQWn3"></script>
+
 
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css"> 
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -50,7 +54,7 @@
 			<div id="pan" class="panel panel-primary">
 			  	<div class="panel-heading">Destination</div>
 			  		<div class="container">	
-			  			<div class="panel-body">
+			  			<div class="panel-body"></div>
 							<form>
 								<div class="form-group"></div>
 								<div class="row">
@@ -70,93 +74,165 @@
                       					<label for="curr-state-input">Current State (ex. NC, WA, HI, etc.) </label>
                       					<input type="text" class="form-control" id="curr-state-input">
                     				</div>
-                    				<div class="col-md-12">
-                    					<label for="location-input">Deals According to Your Interests</label>
-                    					<input type="text" class="form-control" id="deals-interests" placeholder="Type Your Interests Here(ex. coffee, swim, yoga, etc.)">
-                    				</div>
                     			</div>
                     		</form>
-                    	</div>
+                    </div>
 
-						<div class="container">
-						  	<div class="row">
-						  		<div class="col-md-12">
-						  			<button type="submit" class="btn btn-primary" id="submit">Submit</button>
-						  			<button type="save" class="btn btn-primary" id="saveSearch">Save Search</button>
-								</div>
-							</div>
-						</div>	
+					<div class="container">
+						<div class="row">
+						  	<div class="col-md-1"></div>
+						  	<div class="col-md-4"></div>
+						  	<div class="col-md-1"><button type="submit" class="btn btn-primary" id="submit">Submit</button></div>
+						  	<div class="col-md-1"><button type="save" class="btn btn-primary" id="saveSearch">Save Search</button></div>
+						  	<div class="col-md-4"></div>
+						  	<div class="col-md-1"></div>
+						</div>
 			  		</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-		
-	<div class="container">
-		<div class="row">
-			<div id="pan1" class="panel panel-primary">
-		  		<div class="panel-heading">Travel Time</div>
-		  			<div class="panel-body">
-		    			<div id="currentLocation" class="col-md-4">Current Location</div>
-		    			<div id="destin" class="col-md-4">Destination</div>
-		    			<div id="estimatedTravelTime" class="col-md-4">Estimated Travel Time</div>
-            			<hr>
-            			<div id="currentLocationOutput" class="col-md-4"></div>
-            			<div id="destinOutput" class="col-md-4"></div>
-            			<div id="estimatedTravelTimeOutput" class="col-md-4"></div>
-		    			
-		    			<div id="map"></div>
-		    			<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=uOBx9yqfnesCqlEImZOMQYshfmGNQWn3"></script>
-						<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=uOBx9yqfnesCqlEImZOMQYshfmGNQWn3"></script>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="row">
-			<div id="pan5" class="panel panel-primary">
-		  		<div class="panel-heading">Personalized Deals</div>
-		  			<div id="dealsSection" class="panel-body">
-		  				
-		  			</div>
-				</div>
-			</div>
-		</div>
-	</div>
-		
-	<div class="container">
-		<div class="row">
-			<div id="pan2" class="panel panel-primary">
-		  		<div class="panel-heading">Places to Stay</div>
-		  			<div id="placesToStaySection" class="panel-body">
-		    		
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
 	
 	<div class="container">
+        <div class="row">
+            <div id="pan1" class="panel panel-primary">
+                <div class="panel-heading">Travel Info</div>
+                    <div class="panel-body">
+                    <div class="row">
+                    	<div id="map" class="col-md-12"></div>
+                    </div>
+                    <div class="row">
+                        <div id="currentLocation" class="col-md-2">Current Location</div>
+                        <div id="destin" class="col-md-2">Destination</div>
+                        <div id="estimatedDistance" class="col-md-4">Estimated Distance</div>
+                        <div id="estimatedTravelTime" class="col-md-4">Estimated Driving Time (Hr:min:sec)</div>
+                        <hr>
+                        <div id="currentLocationOutput" class="col-md-2"></div>
+                        <div id="destinOutput" class="col-md-2"></div>
+                        <div id="estimatedDistanceOutput" class="col-md-4"></div>
+                        <div id="estimatedTravelTimeOutput" class="col-md-4"></div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+  <!--   <div class="container">
+    	<div class="row">
+    		<div id="map" class="col-md-12">
+            </div>
+        </div>
+    </div>
+ -->
+	<div class="container">
 		<div class="row">
-			<div id="pan3" class="panel panel-primary">
-		  		<div class="panel-heading">Sights to See</div>
-		  			<div id="sightsToSeeSection" class="panel-body">
-					
+			<div class="col-md-6">
+				<div id="pan2" class="panel panel-primary">
+		  			<div class="panel-heading">Unique Interests</div>
+		  				<div id="dealsSection" class="panel-body"></div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div id="pan22" class="panel panel-primary">
+					<div class="panel-heading">Unique Interest Deals</div>
+					<div class="row">
+					<table id="dealsTable" class="panel-body"></table>
 					</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div id="dealsImage" class="panel-body"></div>
+							</div>
+							
+							<div class="col-md-6">
+								<div id="dealsOutcome" class="panel-body"></div>
+							</div>		
+						</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
+	 
 	<div class="container">
 		<div class="row">
-			<div id="pan4" class="panel panel-primary">
-		  		<div class="panel-heading">Things to Do</div>
-		  				<div id="thingsToDoSection" class="panel-body">
-						
+			<div class="col-md-6">
+				<div id="pan2" class="panel panel-primary">
+		  			<div class="panel-heading">Places to Vist</div>
+		  				<div id="placesToVisitSection" class="panel-body"></div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div id="pan22" class="panel panel-primary">
+					<div class="panel-heading">Places to Visit Deals</div>
+					<div class="row">
+					<table id="placesTable" class="panel-body"></table>
+					</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div id="placesImage" class="panel-body"></div>
+							</div>
+							
+							<div class="col-md-6">
+								<div id="placesOutcome" class="panel-body"></div>
+							</div>		
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+		<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div id="pan2" class="panel panel-primary">
+		  			<div class="panel-heading">Sights to See</div>
+		  				<div id="sightsToSeeSection" class="panel-body"></div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div id="pan22" class="panel panel-primary">
+					<div class="panel-heading">Sights to See Deals</div>
+					<div class="row">
+					<table id="sightsTable" class="panel-body"></table>
+					</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div id="sightsImage" class="panel-body"></div>
+							</div>
+							
+							<div class="col-md-6">
+								<div id="sightsOutcome" class="panel-body"></div>
+							</div>		
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div id="pan2" class="panel panel-primary">
+		  			<div class="panel-heading">Things to Do</div>
+		  				<div id="thingsToDoSection" class="panel-body"></div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div id="pan22" class="panel panel-primary">
+					<div class="panel-heading">Things to Do Deals</div>
+					<div class="row">
+					<table id="thingsTable" class="panel-body"></table>
+					</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div id="thingsImage" class="panel-body"></div>
+							</div>
+							
+							<div class="col-md-6">
+								<div id="thingsOutcome" class="panel-body"></div>
+							</div>		
 						</div>
 				</div>
 			</div>
@@ -165,132 +241,9 @@
 
 
 
-
-	<script type="text/javascript">
-	var placesToStay = ["hotels"];
-	var sightsToSee = ["sights", "museums", "landmarks"];
-	var thingsToDo = ["events", "restaurants", "movies", "shopping"];
-	var deals = [];
-
-	function renderDirections() {
-		$("#estimatedTravelTimeOutput").empty();
-         // var x = $(this).data("search");
-         var to = ($("#dest-city-input").val());
-         var from = ($("#curr-city-input").val());
-         var queryURL = 'http://www.mapquestapi.com/directions/v2/optimizedroute?key=uOBx9yqfnesCqlEImZOMQYshfmGNQWn3&json={"locations:["' + (to) + '","' + (from) + "']}";
-          console.log(queryURL);
-
-      $.ajax({url:queryURL,method:"GET"})
-
-        .done(function(response) {
-          // var directions = response.data;
-          console.log(response);
-            $("#estimatedTravelTime").append(response);
-
-          });
-    }
-
-
-
-	function renderDeals() {
-		// $("#deals-interests").empty();
-       	// $("#dealsSection").empty();
-        for (var i = 0; i < deals.length; i++) {
-          var d = $("<button>");
-               // Adding a class
-              d.addClass("deal");
-              // Added a data-attribute
-              d.attr("data-search", deals[i]);
-              // Provided the initial button text
-              d.text(deals[i]);
-              // Added the button to the HTML
-              $("#dealsSection").append(d);
-          }
-      } 
-	function renderThingsToDo() {
-		// $("#thingsToDoSection").empty();
-        for (var i = 0; i < thingsToDo.length; i++) {
-          var c = $("<button>");
-               // Adding a class
-              c.addClass("things");
-              // Added a data-attribute
-              c.attr("data-search", thingsToDo[i]);
-              // Provided the initial button text
-              c.text(thingsToDo[i]);
-              // Added the button to the HTML
-              $("#thingsToDoSection").append(c);
-          }
-      } 
-
-      	function renderPlacesToStay() {
-		// $("#placesToStaySection").empty();
-        for (var i = 0; i < placesToStay.length; i++) {
-          var b = $("<button>");
-               // Adding a class
-              b.addClass("places");
-              // Added a data-attribute
-              b.attr("data-search", placesToStay[i]);
-              // Provided the initial button text
-              b.text(placesToStay[i]);
-              // Added the button to the HTML
-              $("#placesToStaySection").append(b);
-          }
-      } 
-
-      	function renderSightsToSee() {
-		// $("#thingsToDSection").empty();
-        for (var i = 0; i < sightsToSee.length; i++) {
-          var a = $("<button>");
-               // Adding a class
-              a.addClass("sights");
-              // Added a data-attribute
-              a.attr("data-search", sightsToSee[i]);
-              // Provided the initial button text
-              a.text(sightsToSee[i]);
-              // Added the button to the HTML
-              $("#sightsToSeeSection").append(a);
-          }
-      } 
-
-
-	$("#submit").click(function(){
-		event.preventDefault();
-    $("#currentLocationOutput").empty();
-    $("#destinOutput").empty();
-    $("#estimatedTravelTimeOutput").empty();
-    	$("#currentLocationOutput").append((($("#curr-city-input")).val()) + "," + (($("#curr-state-input")).val()));
-    	$("#destinOutput").append((($("#dest-city-input")).val()) + "," + (($("#dest-state-input")).val()));
-    	var deal = $("#deals-interests").val().trim();
-    	deals.push(deal);
-        // Calling renderButtons which handles the processing of our major array
-        renderDirections();
-        renderDeals();
-        renderThingsToDo();
-        renderPlacesToStay();
-        renderSightsToSee();
-        displayDealsInfo();
-      });
-
-    	function displayDealsInfo() {
-        		// $("#dealsSection").empty();
-            var to = ($("#dest-city-input").val());
-         		var x = $(this).data("search");
-              var queryURL = 'http://api.sqoot.com/v2/deals:query:location:locality{["' + (to) + '""]}'+ '?api_key=vt9izh'; 
-          		console.log(queryURL);
-       
-       $.ajax({url:queryURL,method:"GET"})
-
-        .done(function(response) {
-          var results = response.data;
-            $("#dealsSection").append(results);
-      });
-  }
-
-  $(document).on("click", ".deals", displayDealsInfo);
-  // $(document).on("click", ".sights", displaySightsInfo);
-  // $(document).on("click", ".places", displayPlacesInfo);
-  // $(document).on("click", ".things", displayThingsInfo);
-
-</script>
+	<script src="assets/javascript/app.js"></script>
+	<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=uOBx9yqfnesCqlEImZOMQYshfmGNQWn3"></script>
+	<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=uOBx9yqfnesCqlEImZOMQYshfmGNQWn3"></script>
+  
 </body>
 </html>
