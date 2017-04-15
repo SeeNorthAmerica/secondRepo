@@ -1,3 +1,15 @@
+//initialize firebase
+  var config = {
+    apiKey: "AIzaSyA5VaFM-AvDWzYEXpt3mQTgjnV3GHIsO2w",
+    authDomain: "seenorthamerica-6688a.firebaseapp.com",
+    databaseURL: "https://seenorthamerica-6688a.firebaseio.com",
+    projectId: "seenorthamerica-6688a",
+    storageBucket: "seenorthamerica-6688a.appspot.com",
+    messagingSenderId: "919570607813"
+  };
+  firebase.initializeApp(config);
+   var database = firebase.database();
+ 
 // places to visit
 	   $(document).ready(function() {
       $("#map").hide(); 
@@ -132,8 +144,6 @@ map.addLayer(MQ.routing.routeLayer({
     } 
 
     function displayDealsInfo() {
-        $("#dealsOutcome").empty();
-        $("#dealsImage").empty();
         var to = ($("#dest-city-input").val());
         var x = $(this).data("search");
         var queryURL = 'http://api.sqoot.com/v2/deals?api_key=vt9izh&location="' + to + '"&category_slugs=' + x + '';
@@ -161,11 +171,12 @@ map.addLayer(MQ.routing.routeLayer({
                 var locaz1 = $("<p>").html(merchantAddress1 + ", " + merchantLocality1 + ", " + merchantRegion1);
                 var purchaseIt1 = results1[i].deal.url;
                 
-                $.each(response, function(i, results1) { 
-                  z.push("<tr><th rowspan='7'><hr>" + "<img src='"+ images1 +"' height='100%' width='100%'></img>" + "</th><tr><td>" 
+                $.each(results1[i], function(i, results1) { 
+                  z.push("<tr><td><img src='"+ images1 +"' class='url' height='100%' width='100%'></img></td><td>" 
                     + merchantName1 + "</td></tr><tr><td>"+ merchantAddress1 + ", " + merchantLocality1 + ", " + merchantRegion1 + "</td></tr><tr><td>"
                     +shortTitle1+ "</td></tr><tr><td>"+ description1+ "</td></tr><tr><td>Value: $ " 
-                    + dealValue1+ "</td></tr><tr><td>Price: $ " + dealPrice1+ "</td></tr><tr><td>Discount Amount: $ " + discountAmount1 + "</td><tr><hr>");           
+                    + dealValue1+ "</td></tr><tr><td>Your Price: $ " + dealPrice1+ "</td></tr><tr><td>Discount Amount: $ " + discountAmount1 
+                    + "</td></tr><tr><td><a href='"+ purchaseIt1 + "'>Purchase This Deal Here</a></td><tr>");           
                 });
               }
                $('#dealsTable').html(z);
@@ -173,8 +184,6 @@ map.addLayer(MQ.routing.routeLayer({
     }
 
   	function displayPlacesInfo() {
-        $("#placesOutcome").empty();
-        $("#placesImage").empty();
         var to = ($("#dest-city-input").val());
         var x = $(this).data("search");
         var queryURL = 'http://api.sqoot.com/v2/deals?api_key=vt9izh&location="' + to + '"&category_slugs=' + x + '';
@@ -202,11 +211,12 @@ map.addLayer(MQ.routing.routeLayer({
                 var locaz1 = $("<p>").html(merchantAddress1 + ", " + merchantLocality1 + ", " + merchantRegion1);
                 var purchaseIt1 = results1[i].deal.url;
                 
-                $.each(response, function(i, results1) { 
-                  z.push("<tr><th rowspan='7'><hr>" + "<img src='"+ images1 +"' height='100%' width='100%'></img>" + "</th><tr><td>" 
+                $.each(results1[i], function(i, results1) { 
+                  z.push("<tr><td><img src='"+ images1 +"' class='url' height='100%' width='100%'></img></td><td>" 
                     + merchantName1 + "</td></tr><tr><td>"+ merchantAddress1 + ", " + merchantLocality1 + ", " + merchantRegion1 + "</td></tr><tr><td>"
                     +shortTitle1+ "</td></tr><tr><td>"+ description1+ "</td></tr><tr><td>Value: $ " 
-                    + dealValue1+ "</td></tr><tr><td>Price: $ " + dealPrice1+ "</td></tr><tr><td>Discount Amount: $ " + discountAmount1 + "</td><tr><hr>");           
+                    + dealValue1+ "</td></tr><tr><td>Your Price: $ " + dealPrice1+ "</td></tr><tr><td>Discount Amount: $ " + discountAmount1 
+                    + "</td></tr><tr><td><a href='"+ purchaseIt1 + "'>Purchase This Deal Here</a></td><tr>");           
                 });
               }
                $('#placesTable').html(z);
@@ -214,8 +224,6 @@ map.addLayer(MQ.routing.routeLayer({
     }
 
   	function displaySightsInfo() {
-        $("#sightsOutcome").empty();
-        $("#sightsImage").empty();
         var to = ($("#dest-city-input").val());
         var x = $(this).data("search");
         var queryURL = 'http://api.sqoot.com/v2/deals?api_key=vt9izh&location="' + to + '"&category_slugs=' + x + '';
@@ -243,11 +251,12 @@ map.addLayer(MQ.routing.routeLayer({
                 var locaz1 = $("<p>").html(merchantAddress1 + ", " + merchantLocality1 + ", " + merchantRegion1);
                 var purchaseIt1 = results1[i].deal.url;
                 
-                $.each(response, function(i, results1) { 
-                  z.push("<tr><th rowspan='7'><hr>" + "<img src='"+ images1 +"' height='100%' width='100%'></img>" + "</th><tr><td>" 
+                $.each(results1[i], function(i, results1) { 
+                  z.push("<tr><td><img src='"+ images1 +"' class='url' height='100%' width='100%'></img></td><td>" 
                     + merchantName1 + "</td></tr><tr><td>"+ merchantAddress1 + ", " + merchantLocality1 + ", " + merchantRegion1 + "</td></tr><tr><td>"
                     +shortTitle1+ "</td></tr><tr><td>"+ description1+ "</td></tr><tr><td>Value: $ " 
-                    + dealValue1+ "</td></tr><tr><td>Price: $ " + dealPrice1+ "</td></tr><tr><td>Discount Amount: $ " + discountAmount1 + "</td><tr><hr>");           
+                    + dealValue1+ "</td></tr><tr><td>Your Price: $ " + dealPrice1+ "</td></tr><tr><td>Discount Amount: $ " + discountAmount1 
+                    + "</td></tr><tr><td><a href='"+ purchaseIt1 + "'>Purchase This Deal Here</a></td><tr>");           
                 });
               }
                $('#sightsTable').html(z);
@@ -255,8 +264,6 @@ map.addLayer(MQ.routing.routeLayer({
     }
 
   	function displayThingsInfo() {
-        $("#thingsOutcome").empty();
-        $("#thingsImage").empty();
         var to = ($("#dest-city-input").val());
         var x = $(this).data("search");
         var queryURL = 'http://api.sqoot.com/v2/deals?api_key=vt9izh&location="' + to + '"&category_slugs=' + x + '';
@@ -284,30 +291,29 @@ map.addLayer(MQ.routing.routeLayer({
                 var locaz1 = $("<p>").html(merchantAddress1 + ", " + merchantLocality1 + ", " + merchantRegion1);
                 var purchaseIt1 = results1[i].deal.url;
                 
-                $.each(response, function(i, results1) { 
-                  z.push("<tr><th rowspan='7'><hr>" + "<img src='"+ images1 +"' height='100%' width='100%'></img>" + "</th><tr><td>" 
+      
+                $.each(results1[i], function(i, results1) { 
+                  z.push("<tr><td><img src='"+ images1 +"' class='url' height='100%' width='100%'></img></td><td>" 
                     + merchantName1 + "</td></tr><tr><td>"+ merchantAddress1 + ", " + merchantLocality1 + ", " + merchantRegion1 + "</td></tr><tr><td>"
                     +shortTitle1+ "</td></tr><tr><td>"+ description1+ "</td></tr><tr><td>Value: $ " 
-                    + dealValue1+ "</td></tr><tr><td>Price: $ " + dealPrice1+ "</td></tr><tr><td>Discount Amount: $ " + discountAmount1 + "<hr></td><tr>");           
+                    + dealValue1+ "</td></tr><tr><td>Your Price: $ " + dealPrice1+ "</td></tr><tr><td>Discount Amount: $ " + discountAmount1 
+                    + "</td></tr><tr><td><a href='"+ purchaseIt1 + "'>Purchase This Deal Here</a></td><tr>");           
                 });
               }
-               $('#thingsTable').html(z);
+               $('#thingsTable').append(z);
+               
             });
     }
 
 
 	$("#submit").click(function(){
 		event.preventDefault();
-		$("#dealsOutcome").empty();
     	$("#currentLocationOutput").empty();
     	$("#destinOutput").empty();
     	$("#estimatedDistanceOutput").empty();
     	$("#estimatedTravelTimeOutput").empty();
     	$("#currentLocationOutput").append((($("#curr-city-input")).val()) + "," + (($("#curr-state-input")).val()));
     	$("#destinOutput").append((($("#dest-city-input")).val()) + "," + (($("#dest-state-input")).val()));
-    	// var deal = $("#deals-interests").val().trim();
-    	// deals.push(deal);
-        // Calling renderButtons which handles the processing of our major array
         renderDirections();
         renderDeals();
         renderThingsToDo();
@@ -321,3 +327,13 @@ map.addLayer(MQ.routing.routeLayer({
   $(document).on("click", ".sights", displaySightsInfo);
   $(document).on("click", ".things", displayThingsInfo);
  
+  //uploads data to database
+  database.ref().push();
+  // 3. Create Firebase event for adding locations to the database and a row in the html when a user adds an entry
+  database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+  $(document).on("click", ".uniqueDeals", displayDealsInfo);
+  $(document).on("click", ".places", displayPlacesInfo);
+  $(document).on("click", ".sights", displaySightsInfo);
+  $(document).on("click", ".things", displayThingsInfo);
+ 
+ });
