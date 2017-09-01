@@ -1,32 +1,36 @@
 .jumbotron {
-    background-color: grey;
+    background-color: black;
     color: white;
     font-family: 'Calligraffitti', cursive;
     font-size: 24px;
     text-align: center;
 }
 
-.urlImg { 
-	width: 620px;
- 	height: 400px; 
- 	src: '../../images/images.jpg';
- 	background-image: url('../../images/images.jpg');
- 	background-size: cover;
- 	background-position: center;
- }
+#traveling {
+  background-color: white;
+  font-color: black;
+  font-weight: bold;
+}
 
-.urlImg:hover { 
-	width: 620px;
- 	height: 400px; 
- 	src: '../../images/popularStates.jpg';
-	background-image: url('../../images/popularStates.jpg'); 
-	background-size: cover;
- 	background-position: center;
-} 
+
+.form-control {
+  font-color: black;
+  background-color: white;
+  font-weight: bold;
+}
 
 #text-center{
     font-family: "Times";
     font-size: 20px;
+}
+.container {
+  background-color: black;
+  font-color: white;
+}
+
+#currentLocation, #destin, #estimatedDistance, #estimatedTravelTime,#currentLocationOutput, #destinOutput, #estimatedDistanceOutput, #estimatedTravelTimeOutput{
+  color: white;
+  font-weight: bold;
 }
 
 h1{
@@ -36,9 +40,16 @@ h1{
 .active{
     margin-bottom: 5px;
 }
-
-.panel-heading {
+.formGroup {
+  background-color: black;
+}
+#panelHeading {
     text-align: center;
+    background-color: black;
+    color: white;
+    font-family: 'Calligraffitti', cursive;
+    font-size: 24px;
+   /* text-align: right;*/
 }
 
 .row {
@@ -47,6 +58,10 @@ h1{
 
 button {
     text-align: center;
+    background-color: green;
+    color: white;
+    font-color: white;
+    font-weight: bold;
 }
 
 table {

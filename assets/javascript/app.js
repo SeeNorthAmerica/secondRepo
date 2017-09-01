@@ -12,7 +12,10 @@
  
 // places to visit
 	   $(document).ready(function() {
+      $("#travelInfo").show();
       $("#map").hide(); 
+      $("#destination").hide();
+      $("#deals").hide();
     });
 
   var placesToVisit = ["comedy-clubs","restaurants","retail-services","theater"];
@@ -57,6 +60,7 @@ map.addLayer(MQ.routing.routeLayer({
 
 
 	function renderDirections() {
+
 		$("#estimatedDistanceOutput").empty();
 		$("#estimatedTravelTimeOutput").empty();
         var toCity = ($("#dest-city-input").val());
@@ -150,9 +154,11 @@ map.addLayer(MQ.routing.routeLayer({
         console.log(queryURL);
        
        $.ajax({url:queryURL,method:"GET"})
+
      	          .done(function(response) {
                 var z = [];
                 var results1 = response.deals;
+                var found = results1.length;
 
                 for (var i=0; i<results1.length ; i++) {
                 var providerName1 = results1[i].deal.provider_name;
@@ -178,8 +184,10 @@ map.addLayer(MQ.routing.routeLayer({
                     + dealValue1+ "</td></tr><tr><td>Your Price: $ " + dealPrice1+ "</td></tr><tr><td>Discount Amount: $ " + discountAmount1 
                     + "</td></tr><tr><td><a href='"+ purchaseIt1 + "'>Purchase This Deal Here</a></td><tr>");           
                 });
+
               }
-               $('#dealsTable').html(z);
+
+               $('#dealsTable').html(" " + found + " results found" + z);
             });
     }
 
@@ -193,6 +201,7 @@ map.addLayer(MQ.routing.routeLayer({
                 .done(function(response) {
                 var z = [];
                 var results1 = response.deals;
+                var found = results1.length;
 
                 for (var i=0; i<results1.length ; i++) {
                 var providerName1 = results1[i].deal.provider_name;
@@ -219,7 +228,7 @@ map.addLayer(MQ.routing.routeLayer({
                     + "</td></tr><tr><td><a href='"+ purchaseIt1 + "'>Purchase This Deal Here</a></td><tr>");           
                 });
               }
-               $('#placesTable').html(z);
+               $('#placesTable').html(" " + found + " results found" + z);
             });
     }
 
@@ -233,6 +242,7 @@ map.addLayer(MQ.routing.routeLayer({
                 .done(function(response) {
                 var z = [];
                 var results1 = response.deals;
+                var found = results1.length;
 
                 for (var i=0; i<results1.length ; i++) {
                 var providerName1 = results1[i].deal.provider_name;
@@ -259,7 +269,7 @@ map.addLayer(MQ.routing.routeLayer({
                     + "</td></tr><tr><td><a href='"+ purchaseIt1 + "'>Purchase This Deal Here</a></td><tr>");           
                 });
               }
-               $('#sightsTable').html(z);
+               $('#sightsTable').html(" " + found + " results found" + z);
             });
     }
 
@@ -273,6 +283,7 @@ map.addLayer(MQ.routing.routeLayer({
                 .done(function(response) {
                 var z = [];
                 var results1 = response.deals;
+                var found = results1.length;
 
                 for (var i=0; i<results1.length ; i++) {
                 var providerName1 = results1[i].deal.provider_name;
@@ -300,7 +311,7 @@ map.addLayer(MQ.routing.routeLayer({
                     + "</td></tr><tr><td><a href='"+ purchaseIt1 + "'>Purchase This Deal Here</a></td><tr>");           
                 });
               }
-               $('#thingsTable').append(z);
+               $('#thingsTable').html(" " + found + " results found" + z);
                
             });
     }
@@ -314,6 +325,9 @@ map.addLayer(MQ.routing.routeLayer({
     	$("#estimatedTravelTimeOutput").empty();
     	$("#currentLocationOutput").append((($("#curr-city-input")).val()) + "," + (($("#curr-state-input")).val()));
     	$("#destinOutput").append((($("#dest-city-input")).val()) + "," + (($("#dest-state-input")).val()));
+      $("#travelInfo").hide();
+      $("#destination").show();
+      $("#deals").show();
         renderDirections();
         renderDeals();
         renderThingsToDo();
