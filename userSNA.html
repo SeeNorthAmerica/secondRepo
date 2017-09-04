@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- MapQuest Leaflet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+	<!--firebase reference-->
+    <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase.js"></script>
+	<!-- AJAX Calls -->
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+	<!-- Mapquest Leaflet -->
+	<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=uOBx9yqfnesCqlEImZOMQYshfmGNQWn3"></script>
+	<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=uOBx9yqfnesCqlEImZOMQYshfmGNQWn3"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css"> 
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<!-- Fancy Script -->
+	<link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet"> 
+</head>
+
+<body>
+	<!-- Jumbotron -->
+	<div class="jumbotron">
+		<img src="assets/images/earthspin.gif" alt="spinning globe">
+		<h1 class="text-center"><strong>Explore North America</strong></h1>
+		<p> How far away is your destination? What deals does it have to offer?</p>
+		<ul class="nav nav-pills">
+  			<li role="presentation"><a href="indexSNA.html">Sign Out</a></li>
+  			<li role="presentation" class="active"><a href="userSNA.html">Search</a></li>
+  			<li role="presentation"><a href="tripsSNA.html">Saved Trips</a></li>
+		</ul>
+	</div>
+	
+<!-- 	Section to input current city and desired travel city -->
+	<div class="container" id="travelInfo">
+		<div class="row">
+		<br>
+			<div class="col-md-12" id="panelHeading"><strong>Travel Info</strong></div>
+		</div>
+		<div class="row">
+			<div class="col-md-12"> 
+				<form>
+					<div class="form-group"></div>
+						<div class="row">
+                    		<div class="col-md-6">
+                     			<label for="dest-city-input"></label>
+                    			<input type="text" class="form-control" id="dest-city-input" placeholder="Destination City">
+                    		</div>
+                    		<div class="col-md-6">
+                    			<label for="dest-state-input"></label>
+                    			<input type="text" class="form-control" id="dest-state-input" placeholder="Destination State (ex. NC, VA, TN, etc.)">
+                    		</div>
+                    	</div>
+                    	<div class="row">
+                    		<div class="col-md-6">
+                      			<label for="curr-city-input"></label>
+                      			<input type="text" class="form-control" id="curr-city-input" placeholder="Current City"">
+                      		</div>
+                			<div class="col-md-6">
+                      			<label for="curr-state-input"></label>
+                      			<input type="text" class="form-control" id="curr-state-input" placeholder="Current State (ex. NC, VA, TN, etc.)">
+                    		</div>
+                    	</div>
+                </form>
+            </div>
+        </div>
+        <br>
+		<div class="row">
+			<div class="col-md-12">
+				<button type="submit" class="button" id="submit">Submit</button>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Container where map and trip details will be generated -->
+	<div class="container" id="destination">
+        <div class="row">
+        <br>
+            <div class="col-md-12" id="panelHeading"><strong>Trip Details</strong></div>
+        </div>
+        <div class="row">
+            <div id="map" class="col-md-12"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div id="currentLocation" class="col-md-2" id="traveling"><h3>Current Location</h3></div>
+            <div id="destin" class="col-md-2" id="traveling"><h3>Destination</h3></div>
+            <div id="estimatedDistance" class="col-md-4" id="traveling"><h3>Estimated Distance</h3></div>
+            <div id="estimatedTravelTime" class="col-md-4" id="traveling"><h3>Estimated Driving Time (Hr:min:sec)</h3></div>
+        </div>
+        <div class="row">
+            <hr>
+        </div>
+        <div class="row">
+            <div id="currentLocationOutput" class="col-md-2"></div>
+            <div id="destinOutput" class="col-md-2"></div>
+            <div id="estimatedDistanceOutput" class="col-md-4"></div>
+            <div id="estimatedTravelTimeOutput" class="col-md-4"></div>
+        </div>
+        <br>
+        <div class="row" id="saveRow">
+            <button type="submit" class="button" id="saveTrip">Save Trip</button>
+        </div>
+    </div>
+    <br>
+
+
+<!-- 	Section where deals buttons will be generated and AJAX results displayed -->
+	<div class="container" id="deals">
+		<div class="row">
+		<br>
+			<div class="col-md-12" id="panelHeading"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<div id="pan2" class="panel panel-primary">
+<!-- 		  			<div class="panel-heading">Deal Categories</div> -->
+		  			<div class="panel-body">
+		  				<div class "row"><h3><strong>Unique Interests</strong></h3></div>
+		  					<div class="panel-body" id="dealsSection"></div>
+		  				<div class "row"><h3><strong>Things to Do</strong></h3></div>
+		  					<div class="panel-body" id="thingsToDoSection"></div>
+		  				<div class "row"><h3><strong>Places to Visit</strong></h3></div>
+		  					<div class="panel-body" id="placesToVisitSection"></div>
+		  				<div class "row"><h3><strong>Sights to See</strong></h3></div>
+		  					<div class="panel-body" id="sightsToSeeSection"></div>
+		  			</div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div id="pan22" class="panel panel-primary">
+<!-- 					<div class="panel-heading">Results</div> -->
+					<div class="panel-body" id="dealsResults"><h3><strong> Deal Results</strong></h3>
+						<table id="dealsTable"><h4></h4>
+							<thead>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Link scripts -->
+	<script src="assets/javascript/app.js"></script>
+	<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=uOBx9yqfnesCqlEImZOMQYshfmGNQWn3"></script>
+	<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=uOBx9yqfnesCqlEImZOMQYshfmGNQWn3"></script>
+  
+</body>
+</html>
