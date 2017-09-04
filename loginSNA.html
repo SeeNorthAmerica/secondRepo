@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- MapQuest Leaflet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+	<!--firebase reference-->
+    <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.css" />
+	<!-- AJAX Calls -->
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+	<!-- Mapquest Leaflet -->
+	<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=uOBx9yqfnesCqlEImZOMQYshfmGNQWn3"></script>
+	<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=uOBx9yqfnesCqlEImZOMQYshfmGNQWn3"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css"> 
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<!-- Fancy Script -->
+	<link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet"> 
+	 
+</head>
+
+<body>
+	<!-- Jumbotron -->
+	<div class="jumbotron">
+		<img src="assets/images/earthspin.gif" alt="spinning globe">
+		<h1 class="text-center"><strong>Explore North America</strong></h1>
+		<p> How far away is your destination? What deals does it have to offer?</p>
+		<ul class="nav nav-pills">
+  			<li role="presentation" class="active"><a href="loginSNA.html">Sign In</a></li>
+  			<li role="presentation"><a href="indexSNA.html">Search</a></li>
+  			<!-- <li role="presentation"><a href="#">Saved Destinations</a></li>
+  			<li role="presentation"><a href="#">Favorite Deals</a></li> -->
+		</ul>
+	</div>
+	
+<!-- 	Section to input current city and desired travel city -->
+	<div class="container" id="login">
+		<div class="row">
+		<br>
+			<div class="col-md-12" id="panelHeading"><strong>Sign In</strong></div>
+		</div>
+		<div class="row">
+			<div class="col-md-12"> 
+				<h3>Welcome to Explore North America</h3>
+    				<div id="firebaseui-auth-container"></div>
+    				<div id="loader">Loading...</div>
+            </div>
+        </div>
+        
+<!-- Link Firebase -->
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+
+<!-- Link JavaScript file -->
+<script src="assets/javascript/app.js"></script>
+
+  
+</body>
+</html>
